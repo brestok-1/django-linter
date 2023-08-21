@@ -1,7 +1,9 @@
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView
 
 from users.forms import UserLoginForm, UserRegistrationForm
@@ -17,6 +19,7 @@ class LoginUserView(SuccessMessageMixin, LoginView):
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(cleaned_data, username=self.request.user)
 
+
 class RegisterUserView(SuccessMessageMixin, CreateView):
     form_class = UserRegistrationForm
     template_name = 'users/register.html'
@@ -27,3 +30,8 @@ class RegisterUserView(SuccessMessageMixin, CreateView):
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(cleaned_data, username=self.object)
 
+
+@login_required
+def logoutuser(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
