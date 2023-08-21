@@ -12,4 +12,5 @@ until worker_ready ; do
 done
 >&2 echo 'Celery worker is available'
 
-celery -A main.celery flower --broker=${CELERY_BROKER_URL}
+celery -A project.asgi.celery flower --broker=${CELERY_BROKER_URL} \
+--basic_auth="${CELERY_FLOWER_USER}:${CELERY_FLOWER_PASSWORD}"

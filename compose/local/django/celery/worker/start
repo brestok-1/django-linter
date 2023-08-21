@@ -5,4 +5,4 @@ set -o nounset
 
 watchfiles	\
 		--filter python	\
-    'celery	-A	main.celery	worker --pool eventlet --concurrency=100 --loglevel=info -Q high_priority,default'
+    'celery	-A	main.celery	worker --pool eventlet --concurrency=100 --loglevel=info -Q default'
