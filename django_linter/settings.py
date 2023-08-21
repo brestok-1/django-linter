@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +144,10 @@ CELERY_TASK_CREATE_MISSING_QUEUES = False
 CELERY_TASK_ACKS_LATE = True
 CELERY_TASK_SOFT_TIME_LIMIT = 15 * 60
 CELERY_TASK_TIME_LIMIT = CELERY_TASK_SOFT_TIME_LIMIT + 30
+
+# Users
+
+AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
