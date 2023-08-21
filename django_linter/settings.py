@@ -11,8 +11,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+from environs import Env
 
 # from kombu import Queue
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').split()
 
 # Application definition
 
@@ -76,11 +80,11 @@ WSGI_APPLICATION = 'django_linter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('POSTGRES_DB'),
-        'HOST': os.getenv('POSTGRES_HOST'),
-        'PORT': os.getenv('POSTGRES_PORT'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD')
+        'NAME': env('POSTGRES_DB'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD')
     }
 }
 
@@ -131,14 +135,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Celery
 
-CELERY_BROKER_URL: str = os.getenv('CELERY_BROKER_URL')
-CELERY_RESULT_BACKEND: str = os.getenv('CELERY_RESULT_BACKEND')
-# CELERY_BEAT_SCHEDULE = {
-# 'task-scheduled-work': {
-#     'task': 'task_scheduled_work',
-#     'schedule': 5,
-# }
-# }
+CELERY_BROKER_URL: str = env('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND: str = env('CELERY_RESULT_BACKEND')
 CELERY_TASK_DEFAULT_QUEUE = 'default'
 CELERY_TASK_CREATE_MISSING_QUEUES = False
 CELERY_TASK_ACKS_LATE = True

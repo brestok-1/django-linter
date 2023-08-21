@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 
 worker_ready(){
-  celery -A main.celery inspect ping
+  celery -A django_linter inspect ping
 }
 
 until worker_ready ; do
@@ -12,5 +12,4 @@ until worker_ready ; do
 done
 >&2 echo 'Celery worker is available'
 
-celery -A project.asgi.celery flower --broker=${CELERY_BROKER_URL} \
---basic_auth="${CELERY_FLOWER_USER}:${CELERY_FLOWER_PASSWORD}"
+celery -A django_linter flower --broker=${CELERY_BROKER_URL}

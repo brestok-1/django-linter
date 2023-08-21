@@ -30,11 +30,17 @@ services:
     image: redis
     ports:
       - "6379:6379"
+
   rabbitmq:
+    restart: always
     image: rabbitmq
     env_file:
       - .env
-
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
   celery_worker:
     build:
       context: .
@@ -73,7 +79,7 @@ services:
     env_file:
       - .env
     ports:
-        - 5555:5555
+      - 5555:5555
     depends_on:
       - redis
       - db
@@ -81,3 +87,4 @@ services:
 
 volumes:
   postgres_data:
+  rabbitmq_data:
