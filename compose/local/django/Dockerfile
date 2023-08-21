@@ -34,5 +34,5 @@ COPY ./compose/local/fastapi/celery/flower/start /start-flower
 RUN sed -i 's/\r$//g' /start-flower
 RUN chmod +x /start-flower
 
-WORKDIR /fastapidocker
+WORKDIR /djangolinter
 ENTRYPOINT ["/entrypoint"]
