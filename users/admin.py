@@ -10,5 +10,3 @@ class AdminCustomUser(UserAdmin):
     list_display = ('username', 'email',)
     list_display_links = ('username',)
     search_fields = ('username', 'email')
-
-
