@@ -5,6 +5,10 @@ from django.core.exceptions import ValidationError
 from django.db import models
 
 
+def upload_to(instance, filename):
+    return '{}/{}'.format(instance.user.username, filename)
+
+
 def validate_file_extension(value):
     ext = os.path.splitext(value.name)[1]
     valid_extensions = ['.py']
@@ -23,12 +27,12 @@ class UploadedFile(models.Model):
         (OVERWRITTEN, 'Overwritten'),
     ]
 
-    user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE)
-    file = models.FileField(validators=[validate_file_extension], upload_to='media/%(user)s/')
+    user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE, related_name='user')
+    file = models.FileField(upload_to=upload_to, validators=[validate_file_extension])
     time_created = models.DateTimeField(auto_now_add=True)
     time_updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=NEW)
-    check_result = models.TextField(default='')
+    check_result = models.TextField(null=True)
 
     def __str__(self):
-        return f'{self.file} uploaded by {self.user}'
+        return self.file.name

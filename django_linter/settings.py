@@ -128,8 +128,8 @@ STATICFILES_DIRS = (
     BASE_DIR / 'static',
 )
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/files/'
+MEDIA_ROOT = BASE_DIR / 'files'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -140,8 +140,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CELERY_BROKER_URL: str = env('CELERY_BROKER_URL')
 CELERY_RESULT_BACKEND: str = env('CELERY_RESULT_BACKEND')
-CELERY_TASK_DEFAULT_QUEUE = 'default'
-CELERY_TASK_CREATE_MISSING_QUEUES = False
+# CELERY_TASK_DEFAULT_QUEUE = 'default'
+# CELERY_TASK_CREATE_MISSING_QUEUES = False
 CELERY_TASK_ACKS_LATE = True
 CELERY_TASK_SOFT_TIME_LIMIT = 15 * 60
 CELERY_TASK_TIME_LIMIT = CELERY_TASK_SOFT_TIME_LIMIT + 30
