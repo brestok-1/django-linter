@@ -17,34 +17,10 @@
                         <div class="card-header"><h3 class="text-center font-weight-light my-4">Create an account</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{% url 'users:register' %}" method="post">
+                            <form action="{% url 'account:register' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="{{ form.first_name.id_for_label }}">
-                                                Name
-                                            </label>
-                                            {{ form.first_name }}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="{{ form.last_name.id_for_label }}">
-                                                Surname
-                                            </label>
-                                            {{ form.last_name }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <label class="small mb-1" for="{{ form.username.id_for_label }}">
-                                            Username
-                                        </label>
-                                        {{ form.username }}
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-12">
                                         <label class="small mb-1" for="{{ form.email.id_for_label }}">
                                             Email
                                         </label>
@@ -75,7 +51,7 @@
                             </form>
                         </div>
                         <div class="card-footer text-center">
-                            <div class="small"><a href="{% url 'users:login' %}">Do you already have an account?
+                            <div class="small"><a href="{% url 'account:login' %}">Do you already have an account?
                                 Login</a>
                             </div>
                         </div>

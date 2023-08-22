@@ -6,9 +6,9 @@ from users.models import CustomUser
 
 
 class UserLoginForm(AuthenticationForm):
-    username_or_login = forms.CharField(widget=forms.TextInput(attrs={
+    username = forms.CharField(widget=forms.EmailInput(attrs={
         'class': 'form-control py-4',
-        'placeholder': 'Enter username or email',
+        'placeholder': 'Enter email',
     }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control py-4',
@@ -17,16 +17,10 @@ class UserLoginForm(AuthenticationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'password')
 
 
 class UserRegistrationForm(UserCreationForm):
-    first_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control py-4', 'placeholder': 'Enter a name'}))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control py-4', 'placeholder': 'Enter a surname'}))
-    username = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control py-4', 'placeholder': 'Enter the username'}))
     email = forms.CharField(widget=forms.EmailInput(attrs={
         'class': 'form-control py-4', 'placeholder': 'Enter email address'}))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
@@ -36,6 +30,6 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+        fields = ('email', 'password1', 'password2')
 
 

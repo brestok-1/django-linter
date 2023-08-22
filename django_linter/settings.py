@@ -147,10 +147,10 @@ CELERY_TASK_TIME_LIMIT = CELERY_TASK_SOFT_TIME_LIMIT + 30
 
 # Users
 
+AUTHENTICATION_BACKENDS = [
+    'users.backends.UserModelBackend'
+]
 AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-AUTHENTICATION_BACKENDS = [
-    'users.backends.UserModelBackend'
-]
