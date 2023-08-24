@@ -18,7 +18,7 @@ class IndexView(TemplateView):
 
 class FilesView(LoginRequiredMixin, ListView):
     template_name = 'checker/files.html'
+
     def get_queryset(self):
         queryset = UploadedFile.objects.filter(user=self.request.user)
         return queryset
-

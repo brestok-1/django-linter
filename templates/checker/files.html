@@ -9,21 +9,24 @@
                     <h2 class="mt-4 p-2 bg-white mb-0 rounded-top">Загруженные файлы</h2>
                     <ul class="list-group rounded-0 rounded-bottom">
                         {% if object_list.exists %}
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-4">
-                                        Название файла 1
+                            {% for object in object_list %}
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            {{ object.filename }}
+                                        </div>
+                                        <div class="col-3">
+                                            Статус: {{ object.status }}
+                                        </div>
+                                        <div class="col-5">
+                                            <button class="btn my-md-0 my-2 btn-primary">Перезаписать</button>
+                                            <button class="btn my-md-0 my-2 btn-danger">Удалить</button>
+                                            <button class="btn my-md-0 my-2 btn-success disabled">Отчет</button>
+                                        </div>
                                     </div>
-                                    <div class="col-3">
-                                        Статус: Новый
-                                    </div>
-                                    <div class="col-5">
-                                        <button class="btn my-md-0 my-2 btn-primary">Перезаписать</button>
-                                        <button class="btn my-md-0 my-2 btn-danger">Удалить</button>
-                                        <button class="btn my-md-0 my-2 btn-success disabled">Отчет</button>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            {% endfor %}
+
                         {% else %}
                             <li class="list-group-item">
                                 <div class="row">

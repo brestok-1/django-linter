@@ -18,21 +18,26 @@ def validate_file_extension(value):
 
 # Create your models here.
 class UploadedFile(models.Model):
-    NEW = 'new'
-    DELETED = 'deleted'
-    OVERWRITTEN = 'overwritten'
+    NEW = 'Новый'
+    DELETED = 'Удален'
+    OVERWRITTEN = 'Перезаписан'
     STATUS_CHOICES = [
         (NEW, 'New'),
         (DELETED, 'Deleted'),
         (OVERWRITTEN, 'Overwritten'),
     ]
-
     user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE, related_name='user')
     file = models.FileField(upload_to=upload_to, validators=[validate_file_extension])
+    filename = models.CharField(max_length=64, null=True)
     time_created = models.DateTimeField(auto_now_add=True)
     time_updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=NEW)
-    check_result = models.TextField(null=True)
+    check_result = models.TextField(default='')
 
     def __str__(self):
         return self.file.name
+
+    def save(self, *args, **kwargs):
+        if not self.filename:
+            self.filename = self.file.name.split('/')[-1]
+        super().save(*args, **kwargs)
