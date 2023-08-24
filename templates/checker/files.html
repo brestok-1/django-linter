@@ -19,9 +19,16 @@
                                             Статус: {{ object.status }}
                                         </div>
                                         <div class="col-5">
-                                            <button class="btn my-md-0 my-2 btn-primary">Перезаписать</button>
-                                            <button class="btn my-md-0 my-2 btn-danger">Удалить</button>
-                                            <button class="btn my-md-0 my-2 btn-success disabled">Отчет</button>
+                                            <button class="btn my-2 btn-primary {% if object.status == 'Удален' %}disabled{% endif %}">
+                                                Перезаписать
+                                            </button>
+                                            <form method="POST" action="{% url 'checker:delete' object.id %}">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="file_id" value="{{ object.id }}">
+                                                <button class="btn my-2 btn-danger delete-button">Удалить</button>
+                                            </form>
+                                            {#                                            <button class="btn my-md-0 my-2 btn-danger">Удалить</button>#}
+                                            <button class="btn my-2 btn-success disabled">Отчет</button>
                                         </div>
                                     </div>
                                 </li>
@@ -40,4 +47,13 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $(".delete-button").click(function () {
+                if (confirm("Вы уверены, что хотите удалить файл?")) {
+                    $(this).closest("form").submit();
+                }
+            });
+        });
+    </script>
 {% endblock %}
