@@ -42,5 +42,5 @@ class UploadedFile(models.Model):
     def save(self, *args, **kwargs):
         if not self.filename:
             self.filename = self.file.name.split('/')[-1]
-        self.check_result = check_file_errors.delay(self.file).result
+        # self.check_result = check_file_errors.delay(self.file).result
         super().save(*args, **kwargs)
