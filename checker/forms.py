@@ -5,6 +5,8 @@ from checker.models import UploadedFile, validate_file_extension
 
 
 class AddFileForm(forms.ModelForm):
+    file = forms.FileField(widget=forms.FileInput(attrs={'class': 'd-none', 'type': 'file'}), required=False)
+
     class Meta:
         model = UploadedFile
         fields = ['file']

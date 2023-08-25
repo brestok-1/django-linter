@@ -24,12 +24,34 @@ class IndexView(TemplateView):
         return context
 
 
-class FilesView(LoginRequiredMixin, ListView):
+class FilesView(LoginRequiredMixin, FormView):
     template_name = 'checker/files.html'
+    success_url = reverse_lazy('checker:files')
 
-    def get_queryset(self):
-        queryset = UploadedFile.objects.filter(user=self.request.user)
-        return queryset
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = UploadedFile.objects.filter(user=self.request.user)
+        return context
+
+    def form_valid(self, form):
+        file_id = form.save().id
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            "file_group",
+            {
+                "type": "websocket.receive",
+                "file_id": file_id,
+            }
+        )
+        return super().form_valid(form)
+
+    def get_form_class(self):
+        return AddFileForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 class DeleteFileView(View):
@@ -85,4 +107,3 @@ class AddFileView(FormView):
         kwargs = super().get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
-

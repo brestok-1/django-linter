@@ -5,7 +5,14 @@
         <div class="row">
             <div class="text-center mt-1 fs-5">
                 <div class="d-grid col-md-8 mx-auto my-4">
-                    <a class="btn btn-success py-2 fs-3" href="">Загрузить файл</a>
+                    <form action="{% url 'checker:files' %}" method="post" enctype="multipart/form-data">
+                        <div class="input-group justify-content-center">
+                            {% csrf_token %}
+                            {{ form.file }}
+                            <label class="btn btn-success py-2 fs-4 rounded-0 w-100" for="{{ form.file.id_for_label }}">Загрузить файл</label>
+                        </div>
+                    </form>
+
                     <h2 class="mt-4 p-2 bg-white mb-0 rounded-top">Загруженные файлы</h2>
                     <ul class="list-group rounded-0 rounded-bottom">
                         {% if object_list.exists %}
@@ -96,7 +103,7 @@
                                         <div class="d-grid gap-2 col-2 ps-1">
                                             <input class="" type="file">
                                             <button class="btn btn-primary small-text" type="button">
-                                                    Перезаписать
+                                                Перезаписать
                                             </button>
                                         </div>
                                     </div>
@@ -127,5 +134,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const form = document.querySelector('form');
+        const fileInput = form.querySelector('input[type="file"]');
+        fileInput.addEventListener('change', () => {
+            form.submit();
+        });
+    </script>
 
 {% endblock %}
