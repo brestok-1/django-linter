@@ -1,10 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, ListView, DeleteView
+from django.views.generic import TemplateView, ListView, DeleteView, UpdateView
 
+from checker.forms import UploadForm
 from checker.models import UploadedFile
 from checker.tasks import check_file_errors
 
@@ -33,3 +34,5 @@ class DeleteFileView(View):
         file.status = UploadedFile.DELETED
         file.save()
         return redirect('checker:files')
+
+

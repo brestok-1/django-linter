@@ -15,20 +15,36 @@
                                         <div class="col-4">
                                             {{ object.filename }}
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             Статус: {{ object.status }}
                                         </div>
-                                        <div class="col-5">
+                                        <div class="d-grid gap-2 col-2 pe-1">
                                             <button class="btn my-2 btn-primary {% if object.status == 'Удален' %}disabled{% endif %}">
                                                 Перезаписать
                                             </button>
+                                        </div>
+                                        <div class="d-grid gap-2 col-2 pe-1">
                                             <form method="POST" action="{% url 'checker:delete' object.id %}">
                                                 {% csrf_token %}
                                                 <input type="hidden" name="file_id" value="{{ object.id }}">
-                                                <button class="btn my-2 btn-danger delete-button">Удалить</button>
+                                                <button class="btn my-2 btn-danger delete-button {% if object.status == 'Удален' %}disabled{% endif %}">
+                                                    Удалить
+                                                </button>
                                             </form>
-                                            {#                                            <button class="btn my-md-0 my-2 btn-danger">Удалить</button>#}
-                                            <button class="btn my-2 btn-success disabled">Отчет</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-4">
+                                            <small class="text-muted small-text">Дата создания: 12.02.2005</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <small class="text-muted small-text">Последнее обновление:
+                                                12.03.2005</small>
+                                        </div>
+                                        <div class="d-grid gap-2 col-4 mx-auto">
+                                            <button class="btn btn-success {% if object.status == 'Удален' %}disabled{% endif %}">
+                                                Отчет
+                                            </button>
                                         </div>
                                     </div>
                                 </li>
@@ -47,13 +63,69 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $(".delete-button").click(function () {
-                if (confirm("Вы уверены, что хотите удалить файл?")) {
-                    $(this).closest("form").submit();
-                }
-            });
-        });
-    </script>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="text-center mt-1 fs-5">
+                <div class="d-grid col-md-8 mx-auto my-4">
+                    <a class="btn btn-success py-2 fs-3" href="">Загрузить файл</a>
+                    <h2 class="mt-4 p-2 bg-white mb-0 rounded-top">Загруженные файлы</h2>
+                    <ul class="list-group rounded-0 rounded-bottom">
+                        {% if object_list.exists %}
+                            {% for object in object_list %}
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            {{ object.filename }}
+                                            <br>
+                                        </div>
+                                        <div class="col-4">
+                                            Статус: {{ object.status }}
+                                        </div>
+                                        <div class="d-grid gap-2 col-2 pe-1">
+                                            <form method="POST" action="{% url 'checker:delete' object.id %}">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="file_id" value="{{ object.id }}">
+                                                <button class="btn btn-danger small-text delete-button" type="button">
+                                                    Удалить
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="d-grid gap-2 col-2 ps-1">
+                                            <input class="" type="file">
+                                            <button class="btn btn-primary small-text" type="button">
+                                                    Перезаписать
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-4">
+                                            <small class="text-muted small-text">Дата
+                                                создания: {{ object.time_created|date:"d.m.Y" }}</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <small class="text-muted small-text">Последнее
+                                                обновление: {{ object.time_updated|date:"d.m.Y" }}</small>
+                                        </div>
+                                        <div class="d-grid gap-2 col-4 mx-auto">
+                                            <button class="btn btn-success small-text" type="button">Отчет</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="text-center py-2">Список пуст</div>
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

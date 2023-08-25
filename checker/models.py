@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
 
+from checker.tasks import check_file_errors
+
 
 def upload_to(instance, filename):
     return '{}/{}'.format(instance.user.username, filename)

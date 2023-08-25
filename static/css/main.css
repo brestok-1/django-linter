@@ -40,3 +40,6 @@ a.dropdown-item:hover {
     left: 50%;
     transform: translate(-50%,-50%);
 }
+.small-text{
+    font-size: 14px;
+}
