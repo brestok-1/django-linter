@@ -1,13 +1,15 @@
+from asgiref.sync import async_to_sync
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
-from django.views.generic import TemplateView, ListView, DeleteView, UpdateView
+from django.views.generic import TemplateView, ListView, DeleteView, UpdateView, CreateView
 
-from checker.forms import UploadForm
 from checker.models import UploadedFile
 from checker.tasks import check_file_errors
+
+import websocket
 
 
 # Create your views here.
@@ -36,3 +38,24 @@ class DeleteFileView(View):
         return redirect('checker:files')
 
 
+class UpdateFileView(View):
+    def post(self):
+        new_file = self.request.FILES('')
+        UpdateFileView = self.kwargs['file_id']
+
+
+class CreateNewFile(View):
+    def post(self):
+        form = UploadedFileForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            uploaded_file = form.save()
+
+            ws_url = 'ws://{}{}'.format(self.request.get_host(), reverse('consumer_url'))
+            async_to_sync(websocket.connect)(ws_url)
+
+            async_to_sync(websocket.send)('')
+            return redirect('checker:files')
+
+    def get(self):
+        form = UploadedFileForm()
+        return render(self.request, 'checker/files.html', {'form': form})
