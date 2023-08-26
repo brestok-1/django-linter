@@ -28,3 +28,7 @@ class AddFileForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+
+class RewriteFileForm(forms.ModelForm):
+    file = forms.FileField(widget=forms.FileInput(attrs={'class': 'd-none', 'type': 'file'}), required=False)
