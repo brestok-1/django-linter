@@ -29,5 +29,68 @@
     </main>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script>
+
+    <script>
+        const wrapDrag = document.getElementById("wrap-drag");
+        const fileInput = document.querySelector('input[type="file"]');
+        const form = document.querySelector('form');
+        const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+
+        wrapDrag.addEventListener("click", () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener("change", () => {
+            const file = fileInput.files[0];
+            const fileExtension = file.name.split(".").pop().toLowerCase();
+
+            if (fileExtension !== "py") {
+                alert("Acceptable file extensions: .py");
+                return false;
+            }
+
+            const formData = new FormData(form);
+            formData.append("csrfmiddlewaretoken", csrfToken);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action);
+            xhr.setRequestHeader('X-CSRFToken', csrfToken);
+            xhr.send(formData);
+            form.submit();
+        });
+
+        document.querySelector("#id_file").addEventListener("change", function () {
+            var filename = this.value.split("\\").pop();
+            document.getElementById("wrap-drag").innerHTML = filename;
+        });
+
+        Dropzone.autoDiscover = false;
+        const myDropzone = new Dropzone(form, {
+            url: form.action,
+            {#method: "post",#}
+            {#paramName: "file",#}
+            maxFiles: 1,
+            maxFilesize: 100,
+            acceptedFiles: ".py",
+            headers: {
+                "X-CSRFToken": csrfToken
+            },
+            dictDefaultMessage: "",
+            init: function () {
+                this.on("success", function () {
+                    console.log("Файл успешно загружен!");
+                    form.submit()
+                });
+                this.on("error", function () {
+                    console.error("Ошибка при загрузке файла!");
+                });
+                this.on("addedfile", function (file) {
+                    file_name=file.name
+                    document.querySelector("#wrap-drag").innerHTML =file_name;
+                });
+            }
+        });
+    </script>
 
 {% endblock %}
