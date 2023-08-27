@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import View
-from django.views.generic import TemplateView, ListView, DeleteView, UpdateView, CreateView, FormView
+from django.views.generic import TemplateView, ListView, DeleteView, UpdateView, CreateView, FormView, DetailView
 
 from checker.forms import AddFileForm, RewriteFileForm
 from checker.models import UploadedFile
@@ -66,8 +66,6 @@ class UpdateFileView(UpdateView):
     pk_url_kwarg = 'pk'
     model = UploadedFile
     form_class = RewriteFileForm
-    # form = RewriteFileForm
-    # fields = ['file']
     template_name = 'checker/update_file.html'
     success_url = reverse_lazy('checker:files')
 
@@ -75,3 +73,9 @@ class UpdateFileView(UpdateView):
         old_file = self.get_object().file
         old_file.delete(save=False)
         return super().form_valid(form)
+
+
+class GetCheckResult(DetailView):
+    template_name = 'checker/file_report.html'
+    pk_url_kwarg = 'pk'
+    model = UploadedFile
