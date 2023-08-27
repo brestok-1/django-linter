@@ -7,7 +7,7 @@ from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import TemplateView, ListView, DeleteView, UpdateView, CreateView, FormView
 
-from checker.forms import AddFileForm
+from checker.forms import AddFileForm, RewriteFileForm
 from checker.models import UploadedFile
 from checker.tasks import check_file_errors
 
@@ -30,7 +30,7 @@ class FilesView(LoginRequiredMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['object_list'] = UploadedFile.objects.filter(user=self.request.user)
+        context['files'] = UploadedFile.objects.filter(user=self.request.user).order_by('time_created')
         return context
 
     def form_valid(self, form):
@@ -62,48 +62,16 @@ class DeleteFileView(View):
         return redirect('checker:files')
 
 
-class UpdateFileView(View):
-    def post(self):
-        new_file = self.request.FILES('')
-        UpdateFileView = self.kwargs['file_id']
-
-
-# class CreateNewFile(View):
-#     def post(self):
-#         form = UploadedFileForm(self.request.POST, self.request.FILES)
-#         if form.is_valid():
-#             uploaded_file = form.save()
-#
-#             ws_url = 'ws://{}{}'.format(self.request.get_host(), reverse('consumer_url'))
-#             async_to_sync(websocket.connect)(ws_url)
-#
-#             async_to_sync(websocket.send)('')
-#             return redirect('checker:files')
-#
-#     def get(self):
-#         form = UploadedFileForm()
-#         return render(self.request, 'checker/files.html', {'form': form})
-
-class AddFileView(FormView):
-    template_name = 'checker/file_form.html'
-    success_url = reverse_lazy('checker:index')
+class UpdateFileView(UpdateView):
+    pk_url_kwarg = 'pk'
+    model = UploadedFile
+    form_class = RewriteFileForm
+    # form = RewriteFileForm
+    # fields = ['file']
+    template_name = 'checker/update_file.html'
+    success_url = reverse_lazy('checker:files')
 
     def form_valid(self, form):
-        file_id = form.save().id
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            "file_group",
-            {
-                "type": "websocket.receive",
-                "file_id": file_id,
-            }
-        )
+        old_file = self.get_object().file
+        old_file.delete(save=False)
         return super().form_valid(form)
-
-    def get_form_class(self):
-        return FileForm
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs

@@ -32,3 +32,15 @@ class AddFileForm(forms.ModelForm):
 
 class RewriteFileForm(forms.ModelForm):
     file = forms.FileField(widget=forms.FileInput(attrs={'class': 'd-none', 'type': 'file'}), required=False)
+
+    class Meta:
+        model = UploadedFile
+        fields = ['file']
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        instance.status = UploadedFile.OVERWRITTEN
+        if commit:
+            instance.save()
+        return instance
+

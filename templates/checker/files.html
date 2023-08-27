@@ -16,32 +16,27 @@
 
                     <h2 class="mt-4 p-2 bg-white mb-0 rounded-top">Загруженные файлы</h2>
                     <ul class="list-group rounded-0 rounded-bottom">
-                        {% if object_list.exists %}
-                            {% for object in object_list %}
+                        {% if files.exists %}
+                            {% for file in files %}
                                 <li class="list-group-item">
                                     <div class="row">
                                         <div class="col-4">
-                                            {{ object.filename }}
+                                            {{ file.filename }}
                                         </div>
                                         <div class="col-4">
-                                            Статус: {{ object.status }}
+                                            Статус: {{ file.status }}
                                         </div>
                                         <div class="d-grid gap-2 col-2 pe-1">
-                                            <form action="{% url 'checker:files' %}" method="post"
-                                                  enctype="multipart/form-data">
-                                                <div class="input-group justify-content-center">
-                                                    {% csrf_token %}
-                                                    {{ form2.file }}
-                                                    <label class="btn btn-success py-2 fs-4 rounded-0 w-100"
-                                                           for="{{ form.file.id_for_label }}">Перезаписать</label>
-                                                </div>
-                                            </form>
+                                            <a class="btn my-2 btn-primary {% if file.status == 'Удален' %}disabled{% endif %}"
+                                               href="{% url 'checker:update' file.id %}" >
+                                                Перезаписать
+                                            </a>
                                         </div>
                                         <div class="d-grid gap-2 col-2">
-                                            <form method="post" action="{% url 'checker:delete' object.id %}">
+                                            <form method="post" action="{% url 'checker:delete' file.id %}">
                                                 {% csrf_token %}
-                                                <input type="hidden" name="file_id" value="{{ object.id }}">
-                                                <button class="btn my-2 btn-danger w-100 delete-button {% if object.status == 'Удален' %}disabled{% endif %}">
+                                                <input type="hidden" name="file_id" value="{{ file.id }}">
+                                                <button class="btn my-2 btn-danger w-100 delete-button {% if file.status == 'Удален' %}disabled{% endif %}">
                                                     Удалить
                                                 </button>
                                             </form>
@@ -50,14 +45,14 @@
                                     <div class="row mt-1">
                                         <div class="col-4">
                                             <small class="text-muted small-text">Дата
-                                                создания: {{ object.time_created|date:"d.m.Y" }}</small>
+                                                создания: {{ file.time_created|date:"d.m.Y" }}</small>
                                         </div>
                                         <div class="col-4">
                                             <small class="text-muted small-text">Последнее обновление:
-                                                {{ object.time_updated|date:"d.m.Y" }}</small>
+                                                {{ file.time_updated|date:"d.m.Y" }}</small>
                                         </div>
                                         <div class="d-grid gap-2 col-4 mx-auto">
-                                            <button class="btn w-100 btn-success {% if object.status == 'Удален' %}disabled{% endif %}">
+                                            <button class="btn w-100 btn-success {% if file.status == 'Удален' %}disabled{% endif %}">
                                                 Отчет
                                             </button>
                                         </div>

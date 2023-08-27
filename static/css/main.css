@@ -43,3 +43,18 @@ a.dropdown-item:hover {
 .small-text{
     font-size: 14px;
 }
+
+.wrap-drag{
+    border: 1px dashed gray;
+}
+
+.dz-preview{
+    display: none!important;
+}
+
+.dz-file-preview{
+    display: none!important;
+}
+.dz-processing{
+    display: none!important;
+}
