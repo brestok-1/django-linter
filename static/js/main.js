@@ -6,17 +6,8 @@ $(document).ready(function () {
             return false
         }
     });
-    $('.wrap-drag').height($('.wrap-drag').width() * 0.75); // Соотношение 4 к 3
+    $('.wrap-drag').height($('.wrap-drag').width() * 0.75);
     $(window).resize(function () {
         $('.wrap-drag').height($('.wrap-drag').width() * 0.75);
     });
 });
-
-//
-// $(function () {
-//     $('.wrap-drag').height($('.wrap-drag').width() * 0.75); // Соотношение 4 к 3
-//
-//     $(window).resize(function () {
-//         $('.wrap-drag').height($('.wrap-drag').width() * 0.75);
-//     });
-// });
