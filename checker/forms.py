@@ -11,23 +11,11 @@ class AddFileForm(forms.ModelForm):
         model = UploadedFile
         fields = ['file']
 
-    def __init__(self, user, *args, **kwargs):
-        self.user = user
-        super().__init__(*args, **kwargs)
-
     def clean_file(self):
         file = self.cleaned_data.get('file')
         if file:
             validate_file_extension(file)
         return file
-
-    def save(self, commit=True):
-        instance = super().save(commit=False)
-        instance.status = UploadedFile.NEW
-        instance.user = self.user
-        if commit:
-            instance.save()
-        return instance
 
 
 class RewriteFileForm(forms.ModelForm):
@@ -36,11 +24,3 @@ class RewriteFileForm(forms.ModelForm):
     class Meta:
         model = UploadedFile
         fields = ['file']
-
-    def save(self, commit=True):
-        instance = super().save(commit=False)
-        instance.status = UploadedFile.OVERWRITTEN
-        if commit:
-            instance.save()
-        return instance
-

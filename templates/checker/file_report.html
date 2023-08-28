@@ -9,7 +9,7 @@
                             Отчет: {{ object.filename }}</h3>
                         </div>
                         <div class="card-body fs-5">
-                            {{ object.check_result }}
+                            {{ object.check_result| safe }}
                         </div>
                         <div class="card-footer text-center">
                             <a class="btn btn-primary py-2 px-4 fs-5" href="{% url 'checker:files' %}">Назад</a>

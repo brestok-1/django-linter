@@ -52,8 +52,8 @@
                                                 {{ file.time_updated|date:"d.m.Y" }}</small>
                                         </div>
                                         <div class="d-grid gap-2 col-4 mx-auto">
-                                            <a class="btn w-100 btn-success {% if file.status == 'Удален' %}disabled{% endif %}"
-                                               href="{% url 'checker:result' file.id %}">
+                                            <a class="btn w-100  btn-success {% if file.status == 'Удален' %}disabled{% endif %}"
+                                               href="{% url 'checker:result' file.id %}" id="result-link">
                                                 Отчет
                                             </a>
                                         </div>
@@ -84,5 +84,18 @@
         });
     </script>
 
+    <script>
+        const socket = new WebSocket('ws://{{ request.get_host }}/ws/file_check/');
+
+        socket.onmessage = function (event) {
+            const res = JSON.parse(event.data);
+            {#const taskStatus = res.state#}
+            const result = res.result;
+
+            const link = document.getElementById(`result-link`);
+            link.innerHTML = result ? 'Отчет' : 'Processing...';
+            link.classList.remove('disabled-processing');
+        }
+    </script>
 
 {% endblock %}
