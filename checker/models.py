@@ -5,7 +5,7 @@ from channels.layers import get_channel_layer
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
 
@@ -50,34 +50,26 @@ class UploadedFile(models.Model):
         # task_need = kwargs['task_need']
         if task_need:
             from .tasks import check_file_errors
-            task = check_file_errors.delay(self.id)
             channel_layer = get_channel_layer()
             async_to_sync(channel_layer.group_send)(
                 'file_check',
                 {
-                    'type': 'open_websocket',
-                    'task_id': task.task_id,
+                    'type': 'task_message',
+                    'message': 'New task',
                 }
             )
+            check_file_errors.delay(self.id)
+        super().save(*args, **kwargs)
 
-            # Запуск celery task и передача id загруженного файла
 
-# @receiver(post_save, sender=UploadedFile)
+# @receiver(pre_save, sender=UploadedFile)
 # def update_check_result(sender, instance, **kwargs):
-#     # Обновляем поле check_result после выполнения celery task
-#     try:
-#         # updated_instance = UploadedFile.objects.get(id=instance.id)
-#         # updated_instance.check_result = instance.check_result
-#         # updated_instance.save(update_fields=['check_result'])
-#         # Отправляем сообщение о завершении задачи по websocket
-#         channel_layer = get_channel_layer()
-#         async_to_sync(channel_layer.group_send)(
-#             'file_check',
-#             {
-#                 'type': 'task_finished',
-#                 'task_id': str(instance.id),
-#                 'result': instance.check_result,
-#             }
-#         )
-#     except ObjectDoesNotExist:
-#         pass
+#     q = kwargs
+#     channel_layer = get_channel_layer()
+#     async_to_sync(channel_layer.group_send)(
+#         'file_check',
+#         {
+#             'type': 'task_message',
+#             'message': 'Task completed',
+#         }
+#     )

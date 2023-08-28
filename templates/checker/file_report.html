@@ -34,16 +34,19 @@
         if (elem !== null) {
             console.log('start working with ')
             const ws_url = '/ws/file_check/'
-            var socket = new WebSocket("ws://" + window.location.host + "/ws/file_check/");
+            const socket = new WebSocket("ws://" + window.location.host + ws_url);
             socket.onmessage = function (event) {
+                const data = JSON.parse(event.data)
+                const message = data.message
                 console.log('websocket accept connection')
-                const res = JSON.parse(event.data);
-                if (res.type == "task_success") {
+                if (message === 'New task') {
+                    console.log('New task created')
+                } else if (message === 'Task completed') {
                     console.log('SUCCESS')
                     const loadDiv = document.getElementById('load');
                     const resultDiv = document.createElement('div');
                     resultDiv.classList.add('px-3', 'fs-5');
-                    resultDiv.textContent = res.result;
+                    resultDiv.textContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci corporis deserunt dolore dolorem dolorum enim eveniet facere harum illo illum iste maiores nam officia praesentium provident repellendus saepe voluptates, voluptatibus.';
                     loadDiv.parentNode.replaceChild(resultDiv, loadDiv);
                 }
             };

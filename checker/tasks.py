@@ -3,6 +3,7 @@ import time
 
 from asgiref.sync import async_to_sync
 from celery.signals import task_postrun
+from channels.layers import get_channel_layer
 from pylint import epylint as lint
 from celery import shared_task
 from celery.utils.log import get_task_logger
@@ -26,7 +27,14 @@ def check_file_errors(file_id):
     logger.info(output)
     file.check_result = str(output)
     file.save(task_need=False)
-
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        'file_check',
+        {
+            'type': 'task_message',
+            'message': 'Task completed',
+        }
+    )
 
 # @task_postrun.connect
 # def task_postrun_handler(task_id, **kwargs):
