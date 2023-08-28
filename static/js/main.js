@@ -10,4 +10,8 @@ $(document).ready(function () {
     $(window).resize(function () {
         $('.wrap-drag').height($('.wrap-drag').width() * 0.75);
     });
+    $('.wrap-loading').height($('.wrap-loading').width() * 0.6);
+    $(window).resize(function () {
+        $('.wrap-loading').height($('.wrap-loading').width() * 0.6);
+    });
 });

@@ -68,10 +68,6 @@ a.dropdown-item:hover {
     display: none !important;
 }
 
-.disabled-processing {
-    color: var(--bs-btn-disabled-color);
-    pointer-events: none;
-    background-color: var(--bs-btn-disabled-bg);
-    border-color: var(--bs-btn-disabled-border-color);
-    opacity: var(--bs-btn-disabled-opacity);
+.bg-loading{
+    background-color: #ece6e6;
 }

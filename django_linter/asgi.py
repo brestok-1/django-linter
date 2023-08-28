@@ -5,6 +5,7 @@ from channels.routing import URLRouter
 from django.core.asgi import get_asgi_application
 from django.urls import path
 
+import checker.routing
 from checker.consumers import FileCheckConsumer
 
 import os
@@ -15,9 +16,5 @@ django_asgi_app = get_asgi_application()
 
 application = ProtocolTypeRouter({
     'http': django_asgi_app,
-    'websocket': AuthMiddlewareStack(
-        URLRouter([
-            path('ws/file_check', FileCheckConsumer.as_asgi())
-        ])
-    )
+    "websocket": URLRouter(checker.routing.websocket_urlpatterns),
 })

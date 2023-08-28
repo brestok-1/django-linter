@@ -51,33 +51,33 @@ class UploadedFile(models.Model):
         if task_need:
             from .tasks import check_file_errors
             task = check_file_errors.delay(self.id)
-            # Открываем соединение с websocket и отправляем сообщение о запуске задачи
             channel_layer = get_channel_layer()
             async_to_sync(channel_layer.group_send)(
                 'file_check',
                 {
-                    'type': 'task_started',
-                    'task_id': str(task.id),
+                    'type': 'open_websocket',
+                    'task_id': task.task_id,
                 }
             )
 
+            # Запуск celery task и передача id загруженного файла
 
-@receiver(post_save, sender=UploadedFile)
-def update_check_result(sender, instance, **kwargs):
-    # Обновляем поле check_result после выполнения celery task
-    try:
-        # updated_instance = UploadedFile.objects.get(id=instance.id)
-        # updated_instance.check_result = instance.check_result
-        # updated_instance.save(update_fields=['check_result'])
-        # Отправляем сообщение о завершении задачи по websocket
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            'file_check',
-            {
-                'type': 'task_finished',
-                'task_id': str(instance.id),
-                'result': instance.check_result,
-            }
-        )
-    except ObjectDoesNotExist:
-        pass
+# @receiver(post_save, sender=UploadedFile)
+# def update_check_result(sender, instance, **kwargs):
+#     # Обновляем поле check_result после выполнения celery task
+#     try:
+#         # updated_instance = UploadedFile.objects.get(id=instance.id)
+#         # updated_instance.check_result = instance.check_result
+#         # updated_instance.save(update_fields=['check_result'])
+#         # Отправляем сообщение о завершении задачи по websocket
+#         channel_layer = get_channel_layer()
+#         async_to_sync(channel_layer.group_send)(
+#             'file_check',
+#             {
+#                 'type': 'task_finished',
+#                 'task_id': str(instance.id),
+#                 'result': instance.check_result,
+#             }
+#         )
+#     except ObjectDoesNotExist:
+#         pass

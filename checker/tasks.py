@@ -1,3 +1,6 @@
+import json
+import time
+
 from asgiref.sync import async_to_sync
 from celery.signals import task_postrun
 from pylint import epylint as lint
@@ -19,11 +22,12 @@ def check_file_errors(file_id):
                                                  f"missing-class-docstring "
                                                  f"--max-line-length=120", return_std=True)
     output = pylint_stdout.getvalue()
+    time.sleep(5)
     logger.info(output)
     file.check_result = str(output)
     file.save(task_need=False)
+
+
 # @task_postrun.connect
 # def task_postrun_handler(task_id, **kwargs):
-# from checker. import update_celery_task_status
-# async_to_sync(update_celery_task_status)(task_id)
-# pass
+#
