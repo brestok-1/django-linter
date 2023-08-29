@@ -67,3 +67,9 @@ class GetCheckResult(DetailView):
     template_name = 'checker/file_report.html'
     pk_url_kwarg = 'pk'
     model = UploadedFile
+
+    def get(self, requst, *args, **kwargs):
+        obj = self.get_object()
+        if obj.status == UploadedFile.DELETED:
+            raise Http404('Страница не найдена или удалена')
+        return super().get(requst, *args, **kwargs)
