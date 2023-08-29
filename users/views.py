@@ -13,10 +13,6 @@ from users.forms import UserLoginForm, UserRegistrationForm
 class LoginUserView(SuccessMessageMixin, LoginView):
     form_class = UserLoginForm
     template_name = 'users/login.html'
-    success_message = 'Thanks for authorisation, %(username)s!'
-
-    def get_success_message(self, cleaned_data):
-        return self.success_message % dict(cleaned_data, username=self.request.user)
 
 
 class RegisterUserView(SuccessMessageMixin, CreateView):
