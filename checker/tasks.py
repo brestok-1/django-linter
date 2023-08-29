@@ -13,6 +13,7 @@ from celery.utils.log import get_task_logger
 from celery.result import AsyncResult
 
 from checker.models import UploadedFile
+from users.models import CustomUser
 
 logger = get_task_logger('__name__')
 
@@ -41,17 +42,18 @@ def check_file_errors(file_id):
             },
         }
     )
+    send_email_notification.delay(file_id)
 
 
 @shared_task
-def send_email_notification(user_id):
-    user = get_user_model().objects.get(id=user_id)
-    subject = f'Здравствуйте, {user.email}! Проверка {user.filename} проведена успешно!'
+def send_email_notification(file_id):
+    file = UploadedFile.objects.get(id=file_id)
+    subject = f'Здравствуйте! Проверка {file.filename} проведена успешно!'
     message = (f'Результат проверки:\n'
-               f'{user.check_result}')
+               f'{file.check_result}')
     send_mail(
         subject=subject,
         message=message,
         from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[user.email]
+        recipient_list=[file.user.email]
     )

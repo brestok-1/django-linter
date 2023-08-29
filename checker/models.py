@@ -5,11 +5,6 @@ from channels.layers import get_channel_layer
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.db import models
-from django.db.models.signals import post_save, pre_save
-from django.dispatch import receiver
-
-
-# from checker.tasks import check_file_errors
 
 
 def upload_to(instance, filename):
