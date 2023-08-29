@@ -51,20 +51,22 @@
             }
 
             const formData = new FormData(form);
-            formData.append("csrfmiddlewaretoken", csrfToken);
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', form.action);
-            xhr.setRequestHeader('X-CSRFToken', csrfToken);
             xhr.send(formData);
-            form.submit();
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    form.submit();
+                }
+            };
         });
 
         document.querySelector("#id_file").addEventListener("change", function () {
             var filename = this.value.split("\\").pop();
             document.getElementById("wrap-drag").innerHTML = filename;
         });
-
         Dropzone.autoDiscover = false;
         const myDropzone = new Dropzone(form, {
             url: form.action,
@@ -73,9 +75,9 @@
             maxFiles: 1,
             maxFilesize: 100,
             acceptedFiles: ".py",
-            headers: {
-                "X-CSRFToken": csrfToken
-            },
+            {#headers: {#}
+            {#    "X-CSRFToken": csrfToken#}
+            {# },#}
             dictDefaultMessage: "",
             init: function () {
                 this.on("success", function () {
@@ -86,8 +88,8 @@
                     console.error("Ошибка при загрузке файла!");
                 });
                 this.on("addedfile", function (file) {
-                    file_name=file.name
-                    document.querySelector("#wrap-drag").innerHTML =file_name;
+                    file_name = file.name
+                    document.querySelector("#wrap-drag").innerHTML = file_name;
                 });
             }
         });

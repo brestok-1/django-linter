@@ -1,7 +1,9 @@
+import os
+
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import View
@@ -43,6 +45,7 @@ class DeleteFileView(View):
     def post(self, request, file_id):
         file = UploadedFile.objects.get(id=file_id)
         file.status = UploadedFile.DELETED
+        os.remove(file.file.path)
         file.save()
         return redirect('checker:files')
 
@@ -55,9 +58,8 @@ class UpdateFileView(UpdateView):
     success_url = reverse_lazy('checker:files')
 
     def form_valid(self, form):
-        old_file = self.get_object().file
-        old_file.delete(save=False)
         form.instance.status = UploadedFile.OVERWRITTEN
+        form.instance.check_result = ''
         return super().form_valid(form)
 
 

@@ -4,6 +4,9 @@ import time
 from asgiref.sync import async_to_sync
 from celery.signals import task_postrun
 from channels.layers import get_channel_layer
+from django.contrib.auth import get_user_model
+from django.core.mail import send_mail
+from django.conf import settings
 from pylint import epylint as lint
 from celery import shared_task
 from celery.utils.log import get_task_logger
@@ -24,7 +27,6 @@ def check_file_errors(file_id):
                                                  f"missing-class-docstring "
                                                  f"--max-line-length=120", return_std=True)
     output = pylint_stdout.getvalue()
-    time.sleep(5)
     logger.info(output)
     file.check_result = str(output)
     file.save(task_need=False)
@@ -41,7 +43,15 @@ def check_file_errors(file_id):
     )
 
 
-
-# @task_postrun.connect
-# def task_postrun_handler(task_id, **kwargs):
-
+@shared_task
+def send_email_notification(user_id):
+    user = get_user_model().objects.get(id=user_id)
+    subject = f'Здравствуйте, {user.email}! Проверка {user.filename} проведена успешно!'
+    message = (f'Результат проверки:\n'
+               f'{user.check_result}')
+    send_mail(
+        subject=subject,
+        message=message,
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[user.email]
+    )

@@ -12,10 +12,11 @@
                             {% if not object.check_result %}
                                 <div class="wrap-loading bg-loading d-flex fs-4 justify-content-center align-items-center"
                                      id="load">
-                                    <div class="mx-auto d-block">Получение результатов проверки...</div>
+                                    <div class="mx-auto d-block">Получение результатов проверки... <br>
+                                    <span class="small-text mx-auto d-block text-center">Пожалуйста, подождите</span></div>
                                 </div>
                             {% else %}
-                                <div class="px-3 fs-5">
+                                <div class="p-5 fs-6">
                                     {{ object.check_result }}
                                 </div>
                             {% endif %}
@@ -45,7 +46,7 @@
                     console.log('SUCCESS')
                     const loadDiv = document.getElementById('load');
                     const resultDiv = document.createElement('div');
-                    resultDiv.classList.add('px-3', 'fs-5');
+                    resultDiv.classList.add('px-3', 'fs-6', 'p-5');
                     resultDiv.textContent = data.result;
                     loadDiv.parentNode.replaceChild(resultDiv, loadDiv);
                 }
