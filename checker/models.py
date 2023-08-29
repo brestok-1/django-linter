@@ -51,16 +51,19 @@ class UploadedFile(models.Model):
         if task_need:
             from .tasks import check_file_errors
             channel_layer = get_channel_layer()
+
             async_to_sync(channel_layer.group_send)(
                 'file_check',
                 {
                     'type': 'task_message',
-                    'message': 'New task',
+                    'message': {
+                        'message': 'New task',
+                        'result': '',
+                    },
                 }
             )
             check_file_errors.delay(self.id)
         super().save(*args, **kwargs)
-
 
 # @receiver(pre_save, sender=UploadedFile)
 # def update_check_result(sender, instance, **kwargs):

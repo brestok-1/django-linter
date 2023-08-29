@@ -7,6 +7,7 @@ from channels.layers import get_channel_layer
 from pylint import epylint as lint
 from celery import shared_task
 from celery.utils.log import get_task_logger
+from celery.result import AsyncResult
 
 from checker.models import UploadedFile
 
@@ -32,10 +33,15 @@ def check_file_errors(file_id):
         'file_check',
         {
             'type': 'task_message',
-            'message': 'Task completed',
+            'message': {
+                'message': 'Task completed',
+                'result': output
+            },
         }
     )
 
+
+
 # @task_postrun.connect
 # def task_postrun_handler(task_id, **kwargs):
-#
+

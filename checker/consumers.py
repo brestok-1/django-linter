@@ -24,7 +24,11 @@ class FileCheckConsumer(AsyncWebsocketConsumer):
         )
 
     async def task_message(self, event):
-        message = event['message']
+        print(event)
+        message = event['message']['message']
+        result = event['message']['result']
+        print(result)
         await self.send(text_data=json.dumps({
-            'message': message
+            'message': message,
+            'result': result,
         }))
