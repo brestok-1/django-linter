@@ -42,7 +42,7 @@ def check_file_errors(file_id):
             },
         }
     )
-    send_email_notification.delay(file_id)
+    send_email_notification.apply_async(args=[file_id], queue='email_send')
 
 
 @shared_task

@@ -57,17 +57,6 @@ class UploadedFile(models.Model):
                     },
                 }
             )
-            check_file_errors.delay(self.id)
+            check_file_errors.apply_async(args=[self.id], queue='file_check')
         super().save(*args, **kwargs)
 
-# @receiver(pre_save, sender=UploadedFile)
-# def update_check_result(sender, instance, **kwargs):
-#     q = kwargs
-#     channel_layer = get_channel_layer()
-#     async_to_sync(channel_layer.group_send)(
-#         'file_check',
-#         {
-#             'type': 'task_message',
-#             'message': 'Task completed',
-#         }
-#     )
