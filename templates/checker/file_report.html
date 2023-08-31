@@ -13,11 +13,19 @@
                                 <div class="wrap-loading bg-loading d-flex fs-4 justify-content-center align-items-center"
                                      id="load">
                                     <div class="mx-auto d-block">Получение результатов проверки... <br>
-                                    <span class="small-text mx-auto d-block text-center">Пожалуйста, подождите</span></div>
+                                        <span class="small-text mx-auto d-block text-center">Пожалуйста, подождите</span>
+                                    </div>
                                 </div>
                             {% else %}
                                 <div class="p-5 fs-6">
-                                    {{ object.check_result }}
+                                    {{ object.check_result|linebreaksbr }}
+                                </div>
+                                <div class="fs-6 ps-5 mb-3">
+                                    {% if object.is_send_result %}
+                                        Отчет: <b>Отправлен на почту</b>
+                                    {% else %}
+                                        Отчет: <b>Отправляется</b>
+                                    {% endif %}
                                 </div>
                             {% endif %}
                         </div>
@@ -30,27 +38,50 @@
         </div>
     </main>
     <script>
-        console.log('before get')
-        let elem = document.getElementById('load')
+        let elem = document.getElementById('load');
         if (elem !== null) {
-            console.log('start working with ')
-            const ws_url = '/ws/file_check/'
+            const ws_url = '/ws/file_check/';
             const socket = new WebSocket("ws://" + window.location.host + ws_url);
             socket.onmessage = function (event) {
-                const data = JSON.parse(event.data)
-                const message = data.message
-                console.log('websocket accept connection')
+                const data = JSON.parse(event.data);
+                const message = data.message;
+                console.log('websocket accept connection');
                 if (message === 'New task') {
-                    console.log('New task created')
+                    console.log('New task created');
                 } else if (message === 'Task completed') {
-                    console.log('SUCCESS')
+                    console.log('SUCCESS');
                     const loadDiv = document.getElementById('load');
+
                     const resultDiv = document.createElement('div');
-                    resultDiv.classList.add('px-3', 'fs-6', 'p-5');
-                    resultDiv.textContent = data.result;
-                    loadDiv.parentNode.replaceChild(resultDiv, loadDiv);
+                    resultDiv.classList.add('fs-6', 'p-5');
+                    resultDiv.innerHTML = data.result.replace(/\n/g, '<br>');
+
+                    const reportDiv = document.createElement('div');
+                    reportDiv.setAttribute('id', 'report');
+                    reportDiv.classList.add('fs-6', 'ps-5', 'mb-3');
+                    reportDiv.innerHTML = 'Отчет: <b>Отправляется</b>';
+
+                    loadDiv.insertAdjacentElement('afterend', resultDiv);
+                    resultDiv.insertAdjacentElement('afterend', reportDiv);
+
+                    loadDiv.parentNode.removeChild(loadDiv);
                 }
             };
+        }
+    </script>
+    <script>
+        const ws_url = '/ws/email_send/'
+        const socket = new WebSocket("ws://" + window.location.host + ws_url);
+        socket.onmessage = function (event) {
+            console.log('email send ws')
+            const data = JSON.parse(event.data)
+            const message = data.message
+            console.log('websocket accept connection')
+            if (message === 'Result send') {
+                console.log('SUCCESS')
+                const reportDiv = document.getElementById('report');
+                reportDiv.innerHTML = "Отчет: <b>Отправлен почту</b>";
+            }
         }
     </script>
 {% endblock %}

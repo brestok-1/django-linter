@@ -35,6 +35,7 @@ class UploadedFile(models.Model):
     time_updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=NEW)
     check_result = models.TextField(default='')
+    is_send_result = models.BooleanField(default=False)
 
     def __str__(self):
         return self.file.name
@@ -59,4 +60,3 @@ class UploadedFile(models.Model):
             )
             check_file_errors.apply_async(args=[self.id], queue='file_check')
         super().save(*args, **kwargs)
-

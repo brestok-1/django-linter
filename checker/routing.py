@@ -1,7 +1,8 @@
 from django.urls import path
 
-from checker.consumers import FileCheckConsumer
+from checker.consumers import FileCheckConsumer, EmailSendComsumer
 
 websocket_urlpatterns = [
-    path(r'ws/file_check/', FileCheckConsumer.as_asgi()),
+    path('ws/file_check/', FileCheckConsumer.as_asgi()),
+    path('ws/email_send/', EmailSendComsumer.as_asgi()),
 ]

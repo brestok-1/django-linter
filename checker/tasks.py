@@ -57,3 +57,14 @@ def send_email_notification(file_id):
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[file.user.email]
     )
+    logger.info('Результат проверки отправлен на почту')
+    file.is_send_result = True
+    file.save(task_need=False)
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        'email_send',
+        {
+            'type': 'email_message',
+            'message': 'Result send',
+        }
+    )
