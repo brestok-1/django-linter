@@ -1,0 +1,422 @@
+[2023-09-01 12:08:25,711: INFO/MainProcess] Task checker.tasks.check_file_errors[3d51a632-1310-4e63-a66c-e3faf77b88f9] received
+[2023-09-01 12:08:27,474: INFO/ForkPoolWorker-6] checker.tasks.check_file_errors[3d51a632-1310-4e63-a66c-e3faf77b88f9]: ************* Module celery_gPovRO8
+ /djangolinter/files/maksim/celery_gPovRO8.py:19: convention (C0305, trailing-newlines, ) Trailing newlines
+ /djangolinter/files/maksim/celery_gPovRO8.py:1: convention (C0103, invalid-name, ) Module name "celery_gPovRO8" doesn't conform to snake_case naming style
+ 
+ -----------------------------------
+ Your code has been rated at 6.67/10
+ 
+ 
+[2023-09-01 12:08:27,487: INFO/MainProcess] Task checker.tasks.send_email_notification[040631b4-deea-4bd2-a2e0-ffb6e2dfc4b3] received
+[2023-09-01 12:08:27,487: INFO/ForkPoolWorker-6] Task checker.tasks.check_file_errors[3d51a632-1310-4e63-a66c-e3faf77b88f9] succeeded in 1.7739973710000072s: None
+[2023-09-01 12:08:27,499: WARNING/ForkPoolWorker-6] Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0JfQtNGA0LDQstGB0YLQstGD0LnRgtC1ISDQn9GA0L7QstC10YDQutCwIGNlbGVy?=
+ =?utf-8?b?eV9nUG92Uk84LnB5INC/0YDQvtCy0LXQtNC10L3QsCDRg9GB0L/QtdGI0L3QviE=?=
+From: Brestok-Store@yandex.ru
+To: 6234513@gmail.com
+Date: Fri, 01 Sep 2023 12:08:27 -0000
+Message-ID: <169357010749.36.4452994605892022039@7bd49be0640a>
+
+Результат проверки:
+************* Module celery_gPovRO8
+ /djangolinter/files/maksim/celery_gPovRO8.py:19: convention (C0305, trailing-newlines, ) Trailing newlines
+ /djangolinter/files/maksim/celery_gPovRO8.py:1: convention (C0103, invalid-name, ) Module name "celery_gPovRO8" doesn't conform to snake_case naming style
+ 
+ -----------------------------------
+ Your code has been rated at 6.67/10
+ 
+ 
+[2023-09-01 12:08:27,499: WARNING/ForkPoolWorker-6] -------------------------------------------------------------------------------
+[2023-09-01 12:08:27,499: INFO/ForkPoolWorker-6] checker.tasks.send_email_notification[040631b4-deea-4bd2-a2e0-ffb6e2dfc4b3]: Результат проверки отправлен на почту
+[2023-09-01 12:08:27,506: INFO/ForkPoolWorker-6] Task checker.tasks.send_email_notification[040631b4-deea-4bd2-a2e0-ffb6e2dfc4b3] succeeded in 0.018188011000006554s: None
+[2023-09-01 12:28:17,821: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:28:17,825: INFO/MainProcess] Connected to amqp://maksim:**@rabbitmq:5672//
+[2023-09-01 12:28:17,826: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:28:17,838: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 12:28:18,859: INFO/MainProcess] mingle: all alone
+[2023-09-01 12:28:18,874: INFO/MainProcess] celery@c0de3707a008 ready.
+[2023-09-01 12:28:26,957: INFO/MainProcess] Events of group {task} enabled by remote.
+[2023-09-01 12:28:52,861: INFO/MainProcess] Task checker.tasks.check_file_errors[d97abb84-ce7a-4d2d-861d-058594341004] received
+[2023-09-01 12:28:54,621: INFO/ForkPoolWorker-6] checker.tasks.check_file_errors[d97abb84-ce7a-4d2d-861d-058594341004]: ************* Module asgi_oycJejL
+ /djangolinter/files/maksim/asgi_oycJejL.py:1: convention (C0103, invalid-name, ) Module name "asgi_oycJejL" doesn't conform to snake_case naming style
+ 
+ -----------------------------------
+ Your code has been rated at 7.50/10
+ 
+ 
+[2023-09-01 12:28:54,642: INFO/MainProcess] Task checker.tasks.send_email_notification[a55846ba-a03d-4193-8e18-b1c68af54a5c] received
+[2023-09-01 12:28:54,643: INFO/ForkPoolWorker-6] Task checker.tasks.check_file_errors[d97abb84-ce7a-4d2d-861d-058594341004] succeeded in 1.77928771400002s: None
+[2023-09-01 12:28:54,661: WARNING/ForkPoolWorker-7] Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0JfQtNGA0LDQstGB0YLQstGD0LnRgtC1ISDQn9GA0L7QstC10YDQutCwIGFzZ2lf?=
+ =?utf-8?b?b3ljSmVqTC5weSDQv9GA0L7QstC10LTQtdC90LAg0YPRgdC/0LXRiNC90L4h?=
+From: Brestok-Store@yandex.ru
+To: 6234513@gmail.com
+Date: Fri, 01 Sep 2023 12:28:54 -0000
+Message-ID: <169357133466.37.17599331529150342658@c0de3707a008>
+
+Результат проверки:
+************* Module asgi_oycJejL
+ /djangolinter/files/maksim/asgi_oycJejL.py:1: convention (C0103, invalid-name, ) Module name "asgi_oycJejL" doesn't conform to snake_case naming style
+ 
+ -----------------------------------
+ Your code has been rated at 7.50/10
+ 
+ 
+[2023-09-01 12:28:54,661: WARNING/ForkPoolWorker-7] -------------------------------------------------------------------------------
+[2023-09-01 12:28:54,661: INFO/ForkPoolWorker-7] checker.tasks.send_email_notification[a55846ba-a03d-4193-8e18-b1c68af54a5c]: Результат проверки отправлен на почту
+[2023-09-01 12:28:54,677: INFO/ForkPoolWorker-7] Task checker.tasks.send_email_notification[a55846ba-a03d-4193-8e18-b1c68af54a5c] succeeded in 0.0344049109999105s: None
+[2023-09-01 12:30:19,745: INFO/MainProcess] Task checker.tasks.check_file_errors[04578312-7576-4ef7-a498-eadc49a33fa9] received
+[2023-09-01 12:30:21,393: INFO/ForkPoolWorker-6] checker.tasks.check_file_errors[04578312-7576-4ef7-a498-eadc49a33fa9]: ************* Module asgi_4xdtPJh
+ /djangolinter/files/maksim/asgi_4xdtPJh.py:1: convention (C0103, invalid-name, ) Module name "asgi_4xdtPJh" doesn't conform to snake_case naming style
+ 
+ -----------------------------------
+ Your code has been rated at 7.50/10
+ 
+ 
+[2023-09-01 12:30:21,406: INFO/ForkPoolWorker-6] Task checker.tasks.check_file_errors[04578312-7576-4ef7-a498-eadc49a33fa9] succeeded in 1.6573654850001276s: None
+[2023-09-01 12:30:21,406: INFO/MainProcess] Task checker.tasks.send_email_notification[e582fab2-4a8d-4e34-9c95-0e2cb5274038] received
+[2023-09-01 12:30:21,422: WARNING/ForkPoolWorker-6] Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0JfQtNGA0LDQstGB0YLQstGD0LnRgtC1ISDQn9GA0L7QstC10YDQutCwIGFzZ2lf?=
+ =?utf-8?b?NHhkdFBKaC5weSDQv9GA0L7QstC10LTQtdC90LAg0YPRgdC/0LXRiNC90L4h?=
+From: Brestok-Store@yandex.ru
+To: 6234513@gmail.com
+Date: Fri, 01 Sep 2023 12:30:21 -0000
+Message-ID: <169357142142.36.13172651704178532140@c0de3707a008>
+
+Результат проверки:
+************* Module asgi_4xdtPJh
+ /djangolinter/files/maksim/asgi_4xdtPJh.py:1: convention (C0103, invalid-name, ) Module name "asgi_4xdtPJh" doesn't conform to snake_case naming style
+ 
+ -----------------------------------
+ Your code has been rated at 7.50/10
+ 
+ 
+[2023-09-01 12:30:21,422: WARNING/ForkPoolWorker-6] -------------------------------------------------------------------------------
+[2023-09-01 12:30:21,422: INFO/ForkPoolWorker-6] checker.tasks.send_email_notification[e582fab2-4a8d-4e34-9c95-0e2cb5274038]: Результат проверки отправлен на почту
+[2023-09-01 12:30:21,430: INFO/ForkPoolWorker-6] Task checker.tasks.send_email_notification[e582fab2-4a8d-4e34-9c95-0e2cb5274038] succeeded in 0.02359701499995026s: None
+[2023-09-01 12:50:17,717: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:50:17,727: INFO/MainProcess] Connected to redis://redis:6379/0
+[2023-09-01 12:50:17,728: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:50:17,729: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 12:50:18,738: INFO/MainProcess] mingle: all alone
+[2023-09-01 12:50:18,777: INFO/MainProcess] celery@84be0b48ec35 ready.
+[2023-09-01 12:50:28,260: INFO/MainProcess] Events of group {task} enabled by remote.
+[2023-09-01 12:52:33,553: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:52:33,559: INFO/MainProcess] Connected to redis://redis:6379/0
+[2023-09-01 12:52:33,560: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:52:33,562: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 12:52:34,571: INFO/MainProcess] mingle: all alone
+[2023-09-01 12:52:34,587: INFO/MainProcess] celery@84be0b48ec35 ready.
+[2023-09-01 12:52:42,289: INFO/MainProcess] Events of group {task} enabled by remote.
+[2023-09-01 12:55:53,200: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:55:53,203: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds... (1/100)
+
+[2023-09-01 12:55:55,206: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno 111] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2023-09-01 12:55:59,211: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno 111] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2023-09-01 12:56:03,516: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:56:03,520: INFO/MainProcess] Connected to amqp://maksim:**@rabbitmq:5672//
+[2023-09-01 12:56:03,521: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:56:03,526: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 12:56:04,552: INFO/MainProcess] mingle: all alone
+[2023-09-01 12:56:04,565: INFO/MainProcess] celery@ef0a7aef277a ready.
+[2023-09-01 12:56:12,562: INFO/MainProcess] Events of group {task} enabled by remote.
+[2023-09-01 12:58:49,900: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 12:58:49,903: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 2.00 seconds... (1/100)
+
+[2023-09-01 12:58:51,908: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 4.00 seconds... (2/100)
+
+[2023-09-01 12:58:55,913: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 6.00 seconds... (3/100)
+
+[2023-09-01 12:59:01,922: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 8.00 seconds... (4/100)
+
+[2023-09-01 12:59:09,931: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 10.00 seconds... (5/100)
+
+[2023-09-01 12:59:19,944: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 12.00 seconds... (6/100)
+
+[2023-09-01 12:59:31,958: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 14.00 seconds... (7/100)
+
+[2023-09-01 12:59:45,973: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 16.00 seconds... (8/100)
+
+[2023-09-01 13:00:01,992: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 18.00 seconds... (9/100)
+
+[2023-09-01 13:00:20,016: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 20.00 seconds... (10/100)
+
+[2023-09-01 13:00:40,038: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno -3] Temporary failure in name resolution.
+Trying again in 22.00 seconds... (11/100)
+
+[2023-09-01 13:01:55,693: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:01:55,700: INFO/MainProcess] Connected to redis://redis:6379/0
+[2023-09-01 13:01:55,701: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:01:55,704: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 13:01:56,715: INFO/MainProcess] mingle: all alone
+[2023-09-01 13:01:56,749: INFO/MainProcess] celery@462363d89fde ready.
+[2023-09-01 13:02:05,563: INFO/MainProcess] Events of group {task} enabled by remote.
+[2023-09-01 13:07:21,677: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:07:21,683: INFO/MainProcess] Connected to redis://redis:6379/0
+[2023-09-01 13:07:21,683: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:07:21,687: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 13:07:22,694: INFO/MainProcess] mingle: all alone
+[2023-09-01 13:07:22,706: INFO/MainProcess] celery@3184e03aa859 ready.
+[2023-09-01 13:07:30,322: INFO/MainProcess] Events of group {task} enabled by remote.
+[2023-09-01 13:10:33,352: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:10:33,358: INFO/MainProcess] Connected to redis://redis:6379/0
+[2023-09-01 13:10:33,359: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:10:33,361: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 13:10:34,370: INFO/MainProcess] mingle: all alone
+[2023-09-01 13:10:34,380: INFO/MainProcess] celery@c6553903bf67 ready.
+[2023-09-01 13:13:59,399: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:13:59,407: INFO/MainProcess] Connected to redis://redis:6379/0
+[2023-09-01 13:13:59,408: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:13:59,409: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 13:14:00,417: INFO/MainProcess] mingle: all alone
+[2023-09-01 13:14:00,427: INFO/MainProcess] celery@3e2c48818e5b ready.
+[2023-09-01 13:14:10,198: INFO/MainProcess] Events of group {task} enabled by remote.
+[2023-09-01 13:21:54,748: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:21:54,751: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds... (1/100)
+
+[2023-09-01 13:21:56,755: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno 111] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2023-09-01 13:22:00,760: ERROR/MainProcess] consumer: Cannot connect to amqp://maksim:**@rabbitmq:5672//: [Errno 111] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2023-09-01 13:22:06,769: INFO/MainProcess] Connected to amqp://maksim:**@rabbitmq:5672//
+[2023-09-01 13:22:06,769: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:22:06,772: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 13:22:07,816: INFO/MainProcess] mingle: all alone
+[2023-09-01 13:22:07,911: INFO/MainProcess] celery@771c35a4b8ba ready.
+[2023-09-01 13:22:17,017: INFO/MainProcess] Events of group {task} enabled by remote.
+[2023-09-01 13:33:00,224: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:33:00,231: INFO/MainProcess] Connected to redis://redis:6379/0
+[2023-09-01 13:33:00,232: WARNING/MainProcess] /usr/local/lib/python3.10/site-packages/celery/worker/consumer/consumer.py:498: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2023-09-01 13:33:00,236: INFO/MainProcess] mingle: searching for neighbors
+[2023-09-01 13:33:01,245: INFO/MainProcess] mingle: all alone
+[2023-09-01 13:33:01,271: INFO/MainProcess] celery@e48946c159d3 ready.
+[2023-09-01 13:33:10,867: INFO/MainProcess] Events of group {task} enabled by remote.
+[2023-09-01 13:33:13,848: INFO/MainProcess] Task checker.tasks.check_file_errors[724e4919-7148-4ad4-ba9b-90295f5fabb7] received
+[2023-09-01 13:33:16,711: INFO/ForkPoolWorker-6] checker.tasks.check_file_errors[724e4919-7148-4ad4-ba9b-90295f5fabb7]: ************* Module views_E2HN95s
+ /djangolinter/files/maksim/views_E2HN95s.py:1: convention (C0103, invalid-name, ) Module name "views_E2HN95s" doesn't conform to snake_case naming style
+ /djangolinter/files/maksim/views_E2HN95s.py:7: warning (W0401, wildcard-import, ) Wildcard import robotics.models
+ /djangolinter/files/maksim/views_E2HN95s.py:41: error (E0602, undefined-variable, TestingCenterView.get_context_data) Undefined variable 'Technologies'
+ /djangolinter/files/maksim/views_E2HN95s.py:42: error (E0602, undefined-variable, TestingCenterView.get_context_data) Undefined variable 'Projects'
+ /djangolinter/files/maksim/views_E2HN95s.py:43: error (E0602, undefined-variable, TestingCenterView.get_context_data) Undefined variable 'Courses'
+ /djangolinter/files/maksim/views_E2HN95s.py:87: error (E0602, undefined-variable, ListProjectsView.get_queryset) Undefined variable 'Projects'
+ /djangolinter/files/maksim/views_E2HN95s.py:95: error (E0602, undefined-variable, ListTechnologiesView.get_queryset) Undefined variable 'Technologies'
+ /djangolinter/files/maksim/views_E2HN95s.py:103: error (E0602, undefined-variable, ListCoursesView.get_queryset) Undefined variable 'Courses'
+ /djangolinter/files/maksim/views_E2HN95s.py:108: error (E0602, undefined-variable, ProjectDetailView) Undefined variable 'Projects'
+ /djangolinter/files/maksim/views_E2HN95s.py:115: error (E0602, undefined-variable, TechnologyDetailView) Undefined variable 'Technologies'
+ /djangolinter/files/maksim/views_E2HN95s.py:122: error (E0602, undefined-variable, CourseDetailView) Undefined variable 'Courses'
+ /djangolinter/files/maksim/views_E2HN95s.py:1: warning (W0611, unused-import, ) Unused import re
+ /djangolinter/files/maksim/views_E2HN95s.py:3: warning (W0611, unused-import, ) Unused render imported from django.shortcuts
+ /djangolinter/files/maksim/views_E2HN95s.py:6: warning (W0611, unused-import, ) Unused CommonMixin imported from common.views
+ /djangolinter/files/maksim/views_E2HN95s.py:6: warning (W0611, unused-import, ) Unused DetailMixin imported from common.views
+ 
+ -----------------------------------
+ Your code has been rated at 1.50/10
+ 
+ 
+[2023-09-01 13:33:16,728: INFO/MainProcess] Task checker.tasks.send_email_notification[8b6b332b-4227-4411-aa4c-6c577f2e93de] received
+[2023-09-01 13:33:16,729: INFO/ForkPoolWorker-6] Task checker.tasks.check_file_errors[724e4919-7148-4ad4-ba9b-90295f5fabb7] succeeded in 2.8767264570005864s: None
+[2023-09-01 13:33:16,750: WARNING/ForkPoolWorker-7] Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0JfQtNGA0LDQstGB0YLQstGD0LnRgtC1ISDQn9GA0L7QstC10YDQutCwIHZpZXdz?=
+ =?utf-8?b?X0UySE45NXMucHkg0L/RgNC+0LLQtdC00LXQvdCwINGD0YHQv9C10YjQvdC+IQ==?=
+From: Brestok-Store@yandex.ru
+To: 6234513@gmail.com
+Date: Fri, 01 Sep 2023 13:33:16 -0000
+Message-ID: <169357519674.16.10598320603389774541@e48946c159d3>
+
+Результат проверки:
+************* Module views_E2HN95s
+ /djangolinter/files/maksim/views_E2HN95s.py:1: convention (C0103, invalid-name, ) Module name "views_E2HN95s" doesn't conform to snake_case naming style
+ /djangolinter/files/maksim/views_E2HN95s.py:7: warning (W0401, wildcard-import, ) Wildcard import robotics.models
+ /djangolinter/files/maksim/views_E2HN95s.py:41: error (E0602, undefined-variable, TestingCenterView.get_context_data) Undefined variable 'Technologies'
+ /djangolinter/files/maksim/views_E2HN95s.py:42: error (E0602, undefined-variable, TestingCenterView.get_context_data) Undefined variable 'Projects'
+ /djangolinter/files/maksim/views_E2HN95s.py:43: error (E0602, undefined-variable, TestingCenterView.get_context_data) Undefined variable 'Courses'
+ /djangolinter/files/maksim/views_E2HN95s.py:87: error (E0602, undefined-variable, ListProjectsView.get_queryset) Undefined variable 'Projects'
+ /djangolinter/files/maksim/views_E2HN95s.py:95: error (E0602, undefined-variable, ListTechnologiesView.get_queryset) Undefined variable 'Technologies'
+ /djangolinter/files/maksim/views_E2HN95s.py:103: error (E0602, undefined-variable, ListCoursesView.get_queryset) Undefined variable 'Courses'
+ /djangolinter/files/maksim/views_E2HN95s.py:108: error (E0602, undefined-variable, ProjectDetailView) Undefined variable 'Projects'
+ /djangolinter/files/maksim/views_E2HN95s.py:115: error (E0602, undefined-variable, TechnologyDetailView) Undefined variable 'Technologies'
+ /djangolinter/files/maksim/views_E2HN95s.py:122: error (E0602, undefined-variable, CourseDetailView) Undefined variable 'Courses'
+ /djangolinter/files/maksim/views_E2HN95s.py:1: warning (W0611, unused-import, ) Unused import re
+ /djangolinter/files/maksim/views_E2HN95s.py:3: warning (W0611, unused-import, ) Unused render imported from django.shortcuts
+ /djangolinter/files/maksim/views_E2HN95s.py:6: warning (W0611, unused-import, ) Unused CommonMixin imported from common.views
+ /djangolinter/files/maksim/views_E2HN95s.py:6: warning (W0611, unused-import, ) Unused DetailMixin imported from common.views
+ 
+ -----------------------------------
+ Your code has been rated at 1.50/10
+ 
+ 
+[2023-09-01 13:33:16,751: WARNING/ForkPoolWorker-7] -------------------------------------------------------------------------------
+[2023-09-01 13:33:16,751: INFO/ForkPoolWorker-7] checker.tasks.send_email_notification[8b6b332b-4227-4411-aa4c-6c577f2e93de]: Результат проверки отправлен на почту
+[2023-09-01 13:33:16,766: INFO/ForkPoolWorker-7] Task checker.tasks.send_email_notification[8b6b332b-4227-4411-aa4c-6c577f2e93de] succeeded in 0.03596825200020248s: None
+[2023-09-01 13:33:24,075: INFO/MainProcess] Task checker.tasks.check_file_errors[60da21a9-353d-4735-8b22-db252c154ff4] received
+[2023-09-01 13:33:27,140: INFO/ForkPoolWorker-6] checker.tasks.check_file_errors[60da21a9-353d-4735-8b22-db252c154ff4]: ************* Module admin
+ /djangolinter/files/maksim/admin.py:10: convention (C0304, missing-final-newline, ) Final newline missing
+ 
+ -----------------------------------
+ Your code has been rated at 8.00/10
+ 
+ 
+[2023-09-01 13:33:27,153: INFO/ForkPoolWorker-6] Task checker.tasks.check_file_errors[60da21a9-353d-4735-8b22-db252c154ff4] succeeded in 3.074996373000431s: None
+[2023-09-01 13:33:27,154: INFO/MainProcess] Task checker.tasks.send_email_notification[ab89d311-3565-4c55-aef6-dd222ca58abe] received
+[2023-09-01 13:33:27,172: WARNING/ForkPoolWorker-6] Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?0JfQtNGA0LDQstGB0YLQstGD0LnRgtC1ISDQn9GA0L7QstC10YDQutCwIGFkbWlu?=
+ =?utf-8?b?LnB5INC/0YDQvtCy0LXQtNC10L3QsCDRg9GB0L/QtdGI0L3QviE=?=
+From: Brestok-Store@yandex.ru
+To: 6234513@gmail.com
+Date: Fri, 01 Sep 2023 13:33:27 -0000
+Message-ID: <169357520717.15.12383239249720345955@e48946c159d3>
+
+Результат проверки:
+************* Module admin
+ /djangolinter/files/maksim/admin.py:10: convention (C0304, missing-final-newline, ) Final newline missing
+ 
+ -----------------------------------
+ Your code has been rated at 8.00/10
+ 
+ 
+[2023-09-01 13:33:27,172: WARNING/ForkPoolWorker-6] -------------------------------------------------------------------------------
+[2023-09-01 13:33:27,173: INFO/ForkPoolWorker-6] checker.tasks.send_email_notification[ab89d311-3565-4c55-aef6-dd222ca58abe]: Результат проверки отправлен на почту
+[2023-09-01 13:33:27,182: INFO/ForkPoolWorker-6] Task checker.tasks.send_email_notification[ab89d311-3565-4c55-aef6-dd222ca58abe] succeeded in 0.02656194700011838s: None
