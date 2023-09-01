@@ -80,6 +80,13 @@
         const form = document.querySelector('form');
         const fileInput = form.querySelector('input[type="file"]');
         fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            const fileExtension = file.name.split(".").pop().toLowerCase();
+
+            if (fileExtension !== "py") {
+                alert("Acceptable file extensions: .py");
+                return false;
+            }
             form.submit();
         });
     </script>
