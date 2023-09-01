@@ -1,19 +1,12 @@
-import json
-import time
-
 from asgiref.sync import async_to_sync
-from celery.signals import task_postrun
 from channels.layers import get_channel_layer
-from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.conf import settings
 from pylint import epylint as lint
 from celery import shared_task
 from celery.utils.log import get_task_logger
-from celery.result import AsyncResult
 
 from checker.models import UploadedFile
-from users.models import CustomUser
 
 logger = get_task_logger('__name__')
 

@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth import get_user_model
 
 from checker.models import UploadedFile, validate_file_extension
 

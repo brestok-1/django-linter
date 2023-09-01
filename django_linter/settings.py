@@ -13,7 +13,6 @@ import os
 from pathlib import Path
 from environs import Env
 from kombu import Queue
-# from kombu import Queue
 
 env = Env()
 env.read_env()

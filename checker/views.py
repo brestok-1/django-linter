@@ -1,29 +1,19 @@
 import os
 
-from asgiref.sync import async_to_sync
-from channels.layers import get_channel_layer
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy, reverse
+from django.http import Http404
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView, ListView, DeleteView, UpdateView, CreateView, FormView, DetailView
+from django.views.generic import TemplateView, UpdateView, CreateView, DetailView
 
 from checker.forms import AddFileForm, RewriteFileForm
 from checker.models import UploadedFile
-from checker.tasks import check_file_errors
-
-import websocket
 
 
 # Create your views here.
 class IndexView(TemplateView):
     template_name = 'checker/index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # context['data'] = check_file_errors.delay(1)
-        return context
 
 
 class FilesView(LoginRequiredMixin, CreateView):
