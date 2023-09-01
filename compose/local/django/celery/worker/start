@@ -3,4 +3,4 @@
 set -o errexit
 set -o nounset
 
-celery -A django_linter worker --loglevel=info -Q file_check,email_send
+celery -A django_linter worker --loglevel=info -Q file_check,email_send --logfile=celery.log

@@ -69,8 +69,6 @@
         Dropzone.autoDiscover = false;
         const myDropzone = new Dropzone(form, {
             url: form.action,
-            {#method: "post",#}
-            {#paramName: "file",#}
             maxFiles: 1,
             maxFilesize: 100,
             acceptedFiles: ".py",

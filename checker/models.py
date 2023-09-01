@@ -43,7 +43,6 @@ class UploadedFile(models.Model):
     def save(self, task_need=True, *args, **kwargs):
         self.filename = self.file.name.split('/')[-1]
         super().save(*args, **kwargs)
-        # task_need = kwargs['task_need']
         if task_need:
             from .tasks import check_file_errors
             channel_layer = get_channel_layer()
@@ -59,4 +58,3 @@ class UploadedFile(models.Model):
                 }
             )
             check_file_errors.apply_async(args=[self.id], queue='file_check')
-        super().save(*args, **kwargs)
