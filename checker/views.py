@@ -46,7 +46,7 @@ class DeleteFileView(View):
         file = UploadedFile.objects.get(id=file_id)
         file.status = UploadedFile.DELETED
         os.remove(file.file.path)
-        file.save()
+        file.save(task_need=False)
         return redirect('checker:files')
 
 
@@ -68,8 +68,8 @@ class GetCheckResult(DetailView):
     pk_url_kwarg = 'pk'
     model = UploadedFile
 
-    def get(self, requst, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         obj = self.get_object()
         if obj.status == UploadedFile.DELETED:
             raise Http404('Страница не найдена или удалена')
-        return super().get(requst, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
